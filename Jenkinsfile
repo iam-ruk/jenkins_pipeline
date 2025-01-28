@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     // Run the Docker container from the built image
-                    sh "docker run -d ${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker run -d -p 8000:8000 ${IMAGE_NAME}:${IMAGE_TAG}"
                 }
             }
         }
