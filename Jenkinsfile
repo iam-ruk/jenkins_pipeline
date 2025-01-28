@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define environment variables if needed
-        IMAGE_NAME = 'jenkins_test'
+        IMAGE_NAME = 'psql_test'
         IMAGE_TAG = '0.0.1'
     }
 
@@ -18,6 +18,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    sh "cp /env/.env /var/jenkins_home/workspace/jenkins_test/"
                     // Build the Docker image using the Dockerfile in the repo
                     sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
                 }
